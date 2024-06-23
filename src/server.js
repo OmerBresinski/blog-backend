@@ -12,6 +12,9 @@ app.use((req, res, next) => {
 });
 
 app.get("/posts", (req, res) => {
+  const page = parseInt(req.query.page) || 1;
+  const pageSize = parseInt(req.query.pageSize) || 10;
+
   const postsWithoutComments = posts.map(({ comments, ...post }) => {
     const words = post.description.split(" ");
     if (words.length > 10) {
@@ -19,7 +22,13 @@ app.get("/posts", (req, res) => {
     }
     return post;
   });
-  res.json(postsWithoutComments);
+
+  const paginatedPosts = postsWithoutComments.slice(
+    (page - 1) * pageSize,
+    page * pageSize
+  );
+
+  res.json(paginatedPosts);
 });
 
 app.get("/posts/:id", (req, res) => {
