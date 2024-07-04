@@ -20,7 +20,10 @@ module.exports = Array.from({ length: 30 }, (v, i) => {
   ];
   const outcome = casual.random_element(outcomes);
 
-  const comments = Array.from({ length: 10 }, () => casual.sentence);
+  const comments = Array.from({ length: 10 }, () => ({
+    content: casual.sentence,
+    createdBy: casual.first_name,
+  }));
 
   const randomWords = casual.words(40); // Generate 40 random words
   const description = `Today, I ${event} and ${outcome}. ${randomWords}`;
