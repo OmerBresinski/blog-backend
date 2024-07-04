@@ -23,7 +23,7 @@ module.exports = Array.from({ length: 30 }, (v, i) => {
   const comments = Array.from({ length: 10 }, () => casual.sentence);
 
   const randomWords = casual.words(40); // Generate 40 random words
-  const description = `Today, ${name} ${event} and ${outcome}. ${randomWords}`;
+  const description = `Today, I ${event} and ${outcome}. ${randomWords}`;
 
   return {
     id: i,
