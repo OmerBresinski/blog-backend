@@ -7,8 +7,8 @@ app.use(cors());
 app.use(express.json());
 
 //middleware to add delay
-app.use((req, res, next) => {
-  setTimeout(next, 3000);
+app.use((_req, _res, next) => {
+  setTimeout(next, 1000);
 });
 
 app.get("/posts", (req, res) => {
