@@ -23,7 +23,6 @@ module.exports = Array.from({ length: 30 }, (v, i) => {
   const comments = Array.from({ length: 10 }, () => ({
     content: casual.sentence,
     createdBy: casual.first_name,
-    //add a profile picture for the comment creator
     avatar: `https://i.pravatar.cc/150?img=${casual.integer(1, 70)}`,
   }));
 
