@@ -44,6 +44,14 @@ app.post("/posts", (req, res) => {
   res.json(post);
 });
 
+app.post("/posts/:id/comments", (req, res) => {
+  const id = req.params.id;
+  const post = posts.find((post) => post.id == id);
+  const comment = req.body;
+  post.comments.push(comment);
+  res.json(comment);
+});
+
 app.put("/posts/:id", (req, res) => {
   const id = req.params.id;
   const post = posts.find((post) => post.id == id);
