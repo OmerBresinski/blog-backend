@@ -34,13 +34,16 @@ app.get("/posts", (req, res) => {
 app.get("/posts/:id", (req, res) => {
   const id = req.params.id;
   const post = posts.find((post) => post.id == id);
+
   res.json(post);
 });
 
 app.post("/posts", (req, res) => {
   const post = req.body;
+
   post.id = posts.length + 1;
   posts.push(post);
+
   res.json(post);
 });
 
@@ -48,28 +51,35 @@ app.post("/posts/:id/comments", (req, res) => {
   const id = req.params.id;
   const post = posts.find((post) => post.id == id);
   const comment = req.body;
-  post.comments.push(comment);
+
+  post.comments = [comment, ...post.comments];
+
   res.json(comment);
 });
 
 app.put("/posts/:id", (req, res) => {
   const id = req.params.id;
   const post = posts.find((post) => post.id == id);
+
   post.title = req.body.title;
   post.content = req.body.content;
+
   res.json(post);
 });
 
 app.delete("/posts/:id", (req, res) => {
   const id = req.params.id;
   posts = posts.filter((post) => post.id != id);
+
   res.json(posts);
 });
 
 app.put("/posts/:id/like", (req, res) => {
   const id = req.params.id;
   const post = posts.find((post) => post.id == id);
+
   post.likes++;
+
   res.json(post);
 });
 
