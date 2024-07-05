@@ -20,7 +20,7 @@ module.exports = Array.from({ length: 30 }, (v, i) => {
   ];
   const outcome = casual.random_element(outcomes);
 
-  const comments = Array.from({ length: 16 }, () => ({
+  const comments = Array.from({ length: 6 }, () => ({
     content: casual.sentence,
     createdBy: casual.first_name,
     avatar: `https://i.pravatar.cc/150?img=${casual.integer(1, 70)}`,
