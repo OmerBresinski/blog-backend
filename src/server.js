@@ -8,7 +8,7 @@ app.use(express.json());
 
 //middleware to add delay
 app.use((_req, _res, next) => {
-  setTimeout(next, 1000);
+  setTimeout(next, 3000);
 });
 
 app.get("/posts", (req, res) => {
@@ -74,11 +74,11 @@ app.delete("/posts/:id", (req, res) => {
   res.json(posts);
 });
 
-app.put("/posts/:id/like", (req, res) => {
+app.put("/posts/:id/thumbsUp", (req, res) => {
   const id = req.params.id;
   const post = posts.find((post) => post.id == id);
 
-  post.likes++;
+  post.thumbsUp++;
 
   res.json(post);
 });

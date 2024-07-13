@@ -35,7 +35,7 @@ module.exports = Array.from({ length: 30 }, (v, i) => {
     createdBy: name,
     avatar: `https://i.pravatar.cc/150?img=${i}`,
     description: description,
-    likes: 0,
+    thumbsUp: 0,
     comments: comments,
   };
 });
